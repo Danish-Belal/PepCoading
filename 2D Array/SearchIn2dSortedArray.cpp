@@ -28,24 +28,64 @@ Sample Output
 2
 */
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
      int n;
-     cin>>n;
+     cin >> n;
      int arr[n][n];
-     for(int i= 0 ; i< n ; i++){
-          for(int j = 0 ; j< n ;j++){
-               cin>>arr[i][i];
+     for (int i = 0; i < n; i++)
+     {
+          for (int j = 0; j < n; j++)
+          {
+               cin >> arr[i][j];
           }
      }
-     
+
      int data;
-     cin>>data;
-     
+     cin >> data;
 
+     // Brute Force Approch.
+     //       int i1 , j1 , ct =false;
+     //      for(int i= 0 ; i< n ; i++){
+     //           for(int j = 0 ; j< n ;j++){
+     //                if(arr[i][j] == data){
+     //                     ct = true;
+     //                     i1 = i;
+     //                     j1 = j;
 
-  return 0;
+     //                }
+     //           }
+     //      }
+     //     if(ct){
+     //          cout<<i1<<endl<<j1;
+     //     }else{
+     //          cout<<"Not Found";
+     //     }
+
+     int i = n-1, j = 0;
+     while (i >= 0 && j <= n - 1)
+     {
+          if (arr[i][j] == data)
+          {
+               cout << i << endl
+                    << j;
+
+               return 0;
+          }
+          else if (arr[i][j] < data)
+          {
+               j++;
+          }
+          else
+          {
+               i--;
+          }
+     }
+
+     cout << "Not Found";
+
+     return 0;
 }
