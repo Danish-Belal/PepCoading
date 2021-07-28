@@ -52,6 +52,9 @@ Sample Output
 24
 14
 
+
+
+
 */
 
 #include<bits/stdc++.h>
