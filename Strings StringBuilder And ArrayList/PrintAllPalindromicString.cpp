@@ -22,9 +22,9 @@ void Solution(string s){
 
 bool isPalindrome(string s , int left , int right){
      while(left < right){
-          if(s[left] != s[right]){
+          if(s.at(left) != s.at(right)){
                return false;
-               break;
+            
 
           }
           left++;
@@ -33,6 +33,7 @@ bool isPalindrome(string s , int left , int right){
      return true;
 
 }
+
 int main()
 {
      string st ;
@@ -46,6 +47,7 @@ int main()
 
 
 /*
+
 // Java Code.
 import java.io.*;
 import java.util.*;
