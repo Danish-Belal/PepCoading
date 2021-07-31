@@ -27,7 +27,7 @@ string difference(string s)
 {
     string ans = "";
     for(int i = 0 ; i<s.length() ; i++){
-         char c = s[i];
+        // char c = s[i];
          ans = ans+s[i];
          if(i <s.length()-1){
          ans +=to_string(s[i+1]-s[i]);
