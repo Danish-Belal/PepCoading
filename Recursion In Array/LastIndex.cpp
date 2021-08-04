@@ -31,19 +31,32 @@ Sample Output
 #include <bits/stdc++.h>
 using namespace std;
 
-int lastIndex(int arr[], int idx, int x, int n){
+int lastIndex(int arr[], int idx, int x, int n)
+{
     // write your code here
-    if(idx ==n) return -1;
+    if (idx == n)
+        return -1;
 
-     if(arr[n]==x){
-          return n;
-     }
-   return lastIndex(arr , n-1 , x , idx);
-    
-
+    int li = lastIndex(arr, idx + 1, x, n);
+    if (li == -1)
+    {
+        if (arr[idx] == x)
+        {
+            return idx;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+    else
+    {
+        return li;
+    }
 }
 
-int main(){
+int main()
+{
     int n;
     cin >> n;
     int d;
