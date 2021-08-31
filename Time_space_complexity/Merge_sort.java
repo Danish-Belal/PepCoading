@@ -1,17 +1,53 @@
 package Time_space_complexity;
 import java.util.*;
+/*
+1. You are given an array(arr) of integers.
+2. You have to sort the given array in increasing order using the merge sort.
+Constraints
+
+1 <= N <= 100000
+-10^9 <= arr[i] <= 10^9
+
+Sample Input
+
+5
+7
+-2
+4
+1
+3
+
+Sample Output
+
+Merging these two arrays
+left array -> 7
+right array -> -2
+Merging these two arrays
+left array -> -2 7
+right array -> 4
+Merging these two arrays
+left array -> 1
+right array -> 3
+Merging these two arrays
+left array -> -2 4 7
+right array -> 1 3
+Sorted Array -> -2 1 3 4 7
+ */
 public class Merge_sort {
     public static int[] mergeSort(int[] arr, int lo, int hi) {
         //write your code here
-        if()
-        int[] ans = new int[arr.length];
-        int mid = lo+hi/2;
+         if(lo == hi){
+             int []  a= new int[1];
+             a[0] = arr[lo];
+             return  a;
+         }
 
-        mergeSort(arr, lo , mid-1);
+        int mid = (lo+hi)/2;
 
-        mergeSort(arr , mid , hi);
-        mergeTwoSortedArrays()
-
+       int[] fa =  mergeSort(arr, lo , mid);
+       int[] la =   mergeSort(arr ,mid+1 , hi);
+       int[] ans = mergeTwoSortedArrays(fa , la);
+        return ans;
 
     }
 
