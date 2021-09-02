@@ -9,6 +9,8 @@ public class RihestCoustmerWelth_leet {
         System.out.println(ans);
 
 
+
+
     }
 
     public static int maximumWealth(int[][] accounts) {
