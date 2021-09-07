@@ -76,7 +76,7 @@ public class Sort_012 {
             System.out.println(arr[i]);
         }
     }
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int[] arr = new int[n];
