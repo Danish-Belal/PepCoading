@@ -38,7 +38,7 @@ public class PowOfXN {
 //        }
 //        pow = Math.round(pow*100D)/100D;
 //        return pow;
-        
+
         double temp;
         if( n == 0)
             return 1;
