@@ -23,48 +23,51 @@ true
 public class BalancedBrackets {
 
     public static void main(String[] args) throws Exception {
-        String  str = "[(a + b) + {(c + d) * (e / f)}]";
+        Scanner in = new Scanner(System.in);
+
+        String  str = in.nextLine();
         boolean ans = isBalanced(str);
         System.out.println(ans);
 
     }
     public static boolean isBalanced(String  str){
         Stack<Character> stk = new Stack<>();
-        for (int i =0 ; i < str.length() ; i++){
-            char ele = str.charAt(i);
-            if(ele == ')' || ele == '}' || ele == ']'){
-                if(ele == ')'){
-                    if(stk.peek() == '('){
-                        stk.pop();
-                    }else{
-                       return false;
-                    }
-                }else if( ele == '}'){
-                    if(stk.peek() == '{'){
-                        stk.pop();
-                    }else{
+        for(int i = 0; i<str.length() ; i++){
+            char ch = str.charAt(i);
+            if(ch == '(' || ch == '{' || ch == '['){
+                stk.push(ch);
+
+            }else if(ch == ')' || ch == '}' || ch == ']'){
+                if(stk.size() == 0){
+                    return false;
+                }else if(ch == ')'){
+                    if(stk.peek() != '(' ){
                         return false;
                     }
 
-                }else if(ele == '['){
-                    if(stk.peek() == ']'){
-                        stk.pop();
-                    }
-                    else{
+                }else if(ch == '}'){
+                    if(stk.peek() != '{' ){
                         return false;
                     }
+
+                }else if(ch == ']') {
+                    if(stk.peek() != '[' ){
+                        return false;
+                    }
+
                 }
-
-
-
-            }else if(ele == '(' || ele == '{' || ele == '['){
-                stk.push(ele);
+                stk.pop();
+            }else{
+                // ignore
             }
         }
+      if(stk.size() == 0){
+          return true;
+      }else{
 
-     if(stk.empty()) return true;
+          return false;
+      }
 
-        return   false;
     }
 
 }
