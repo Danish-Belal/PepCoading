@@ -40,28 +40,39 @@ Sample Output
  */
 public class NextGreaterElement {
     public static void display(int[] a){
-        StringBuilder sb = new StringBuilder();
+//        StringBuilder sb = new StringBuilder();
+//
+//        for(int val: a){
+//            sb.append(val + "\n");
+//        }
+//        System.out.println(sb);
 
-        for(int val: a){
-            sb.append(val + "\n");
-        }
-        System.out.println(sb);
+        System.out.println(Arrays.toString(a));
     }
 
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//
+//        int n = Integer.parseInt(br.readLine());
+//        int[] a = new int[n];
+//        for(int i = 0; i < n; i++){
+//            a[i] = Integer.parseInt(br.readLine());
+//        }
 
-        int n = Integer.parseInt(br.readLine());
-        int[] a = new int[n];
-        for(int i = 0; i < n; i++){
-            a[i] = Integer.parseInt(br.readLine());
-        }
+        int[] a = {10,6,12,5,3,2,4,8,1};
 
-        int[] nge = solve(a);
-        display(nge);
+        int[] ngr = nextGreaterright(a);
+        int[] ngl = nextGreaterleft(a);
+        int[] nsr = nextSmallerright(a);
+        int[] nsl = nextSmallerleft(a);
+        display(ngr);
+        display(ngl);
+        display(nsr);
+        display(nsl);
     }
 
-    public static int[] solve(int[] arr){
+    // Next greater right.
+    public static int[] nextGreaterright(int[] arr){
         int[] ans = new int[arr.length];
         Stack<Integer> s = new Stack<>();
         s.push(0);
@@ -80,6 +91,64 @@ public class NextGreaterElement {
         return ans;
     }
 
+     // Next greater left.
+     public static int[] nextGreaterleft(int[] arr){
+         int[] ans = new int[arr.length];
+         Stack<Integer> s = new Stack<>();
+         s.push(arr.length-1);
 
+         for(int i = arr.length-2 ; i>=0; i--){
+             while(s.size() > 0 && arr[s.peek() ]< arr[i]){
+                 ans[s.pop()] = arr[i];
+             }
+             s.push(i);
+         }
+         while (s.size() > 0){
+             ans[s.pop()] = -1;
+
+         }
+         // solve
+         return ans;
+     }
+
+     // Next smaller in right.
+     public static int[] nextSmallerright(int[] arr){
+         int[] ans = new int[arr.length];
+         Stack<Integer> s = new Stack<>();
+         s.push(0);
+
+         for(int i = 1 ; i<arr.length ; i++){
+             while(s.size() > 0 && arr[s.peek()]> arr[i]){
+                 ans[s.pop()] = arr[i];
+             }
+             s.push(i);
+         }
+         while (s.size() > 0){
+             ans[s.pop()] = -1;
+
+         }
+         // solve
+         return ans;
+     }
+
+     // Next smaller left
+    public static int[] nextSmallerleft(int[] arr){
+        int[] ans = new int[arr.length];
+        Stack<Integer> s = new Stack<>();
+        s.push(arr.length-1);
+
+        for(int i = arr.length-2 ; i>=0; i--){
+            while(s.size() > 0 && arr[s.peek() ]> arr[i]){
+                ans[s.pop()] = arr[i];
+            }
+            s.push(i);
+        }
+        while (s.size() > 0){
+            ans[s.pop()] = -1;
+
+        }
+        // solve
+        return ans;
+    }
 
 }
