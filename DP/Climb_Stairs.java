@@ -37,10 +37,7 @@ public class Climb_Stairs {
        if(dp[n] != 0){
            return dp[n];
        }
-//        int stp1 = climbStairs(n-1 );
-//        int stp2 = climbStairs(n-2 );
-//        int stp3 = climbStairs(n-3 );
-//        dp[n] = stp1+stp2+stp3;
+
         dp[n] = climbStairs(n-1 ,dp )+ climbStairs(n-2 , dp)+climbStairs(n-3 , dp );
         return dp[n];
 
