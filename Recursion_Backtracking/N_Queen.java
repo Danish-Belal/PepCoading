@@ -26,8 +26,9 @@ public class N_Queen {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
 
+        int tNQueen = 0;
         boolean[][] chess = new boolean[n][n];
-        printNQueens(chess , "" , 0);
+        printNQueens(chess , "" , 0 );
 
     }
     static  boolean isQueenSafe(boolean[][] chess , int row , int col){
@@ -54,9 +55,10 @@ public class N_Queen {
         return  true;
     }
 
-    public static void printNQueens(boolean[][] chess, String asf, int row) {
+    public static void printNQueens(boolean[][] chess, String asf, int row ) {
         if(row == chess.length){
             System.out.println(asf+".");
+
             return;
         }
 
@@ -67,7 +69,7 @@ public class N_Queen {
                 chess[row][col] = true;
 
                 // Recursive Call
-                printNQueens(chess, asf + row + "-" + col + ", ", row + 1);
+                printNQueens(chess, asf + row + "-" + col + ", ", row + 1 );
 
                 //Unplaced the Queen.
                 chess[row][col] = false;
