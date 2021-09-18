@@ -44,7 +44,8 @@ public class ClimbStairsWithMinimumMoves {
             arr[i] = in.nextInt();
         }
 
-        System.out.println(jump(arr));
+      //  System.out.println(jump(arr));
+        System.out.println(greedyAlgojump(arr));
 
     }
     public static int jump(int[] nums ) {
@@ -66,6 +67,31 @@ public class ClimbStairsWithMinimumMoves {
         return dp[0];
 
 
+    }
+
+    public static int greedyAlgojump(int[]nums){
+        int step  =0 ;
+        for(int i = 0 ; i< nums.length ; ){
+            if(nums[i] == 0){
+                break;
+            }
+            int max = 0;
+            int maxidx = 0;
+            for(int jump = 1 ; jump <= nums[i] ; jump++){
+                int j = i+jump;
+                if(j == nums.length-1){
+                    step++;
+                    return step;
+                }
+                if(j+nums[j] >= max){
+                    max = nums[j]+j;
+                    maxidx = j;
+                }
+            }
+            i = maxidx;
+            step++;
+        }
+        return 0;
     }
 
 }
