@@ -36,14 +36,15 @@ Sample Output
 public class ClimbStairsWithMinimumMoves {
     public static void main(String[] args)  {
         // write your code here
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
+//        Scanner in = new Scanner(System.in);
+//        int n = in.nextInt();
+//
+//        int[] arr = new int[n];
+//        for (int i = 0 ; i<arr.length ; i++){
+//            arr[i] = in.nextInt();
+//        }
 
-        int[] arr = new int[n];
-        for (int i = 0 ; i<arr.length ; i++){
-            arr[i] = in.nextInt();
-        }
-
+        int[] arr = {3,3,0,2,1,2,4,2,0,0};
       //  System.out.println(jump(arr));
         System.out.println(greedyAlgojump(arr));
 
