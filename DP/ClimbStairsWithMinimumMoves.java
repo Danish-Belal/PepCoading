@@ -52,8 +52,6 @@ public class ClimbStairsWithMinimumMoves {
     public static int jump(int[] nums ) {
         int[] dp= new int[nums.length];
 
-
-
         for(int i = dp.length-2 ; i>=0 ; i--){
             int min = Integer.MAX_VALUE-1;
             for(int jump = 1 ; jump<=nums[i]; jump++){
