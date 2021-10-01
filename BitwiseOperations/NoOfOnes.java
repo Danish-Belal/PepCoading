@@ -11,6 +11,6 @@ public class NoOfOnes {
     }
 
     public static void main(String[] args) {
-        System.out.println(Ones(16));
+        System.out.println(Ones(17));
     }
 }
