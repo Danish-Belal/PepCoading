@@ -43,8 +43,16 @@ public class GoldMine {
                 arr[i][j] = in.nextInt();
             }
         }
-       int ans =  maxGlod(arr);
-        System.out.println(ans);
+//       int ans =  maxGlod(arr);
+//        System.out.println(ans);
+
+        // For recursive approach.
+        int max = 0;
+        int[][] dp = new int[n][m];
+        for (int i = 0 ; i< arr.length ; i++){
+             max = Math.max(max , goldmine(arr , i , 0 , dp));
+        }
+        System.out.println(max);
     }
 
     public static int maxGlod(int[][] arr) {
@@ -70,9 +78,6 @@ public class GoldMine {
      }
 
 
-//        for(int[] i : dp){
-//            System.out.println(Arrays.toString(i));
-//        }
 
       int ans = 0;
         for(int i = 0 ; i<n ; i++){
@@ -80,5 +85,22 @@ public class GoldMine {
         }
       return ans;
 
+    }
+
+    public static int goldmine(int[][] arr ,int sr , int sc , int[][] dp){
+
+        if(sr <0 || sr >=arr.length) return Integer.MIN_VALUE;
+        if(sc== arr[0].length-1) return arr[sr][sc];
+
+        if(dp[sr][sc] !=0){
+            return dp[sr][sc];
+        }
+
+        int f1  = goldmine(arr , sr-1 , sc+1 , dp);
+        int f2 = goldmine(arr ,sr , sc+1 , dp );
+        int f3 = goldmine(arr , sr+1 , sc+1 , dp );
+
+        int ans = Math.max(f1 , Math.max(f2,f3))+arr[sr][sc];
+        return ans;
     }
 }

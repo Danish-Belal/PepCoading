@@ -4,11 +4,16 @@ import java.util.Scanner;
 
 public class Fibonacci_dp {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int[] dp = new int[n+1];
-        System.out.println(fib(n , dp));
-        System.out.println(fibiona(n));
+//        Scanner in = new Scanner(System.in);
+//        int n = in.nextInt();
+//        int[] dp = new int[n+1];
+//        System.out.println(fib(n , dp));
+//        System.out.println(fibiona(n));
+
+        int[] arr = {-2,-4,-5,-2,-3,-4 , 0 , -1};
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+
 
     }
 
@@ -37,4 +42,14 @@ public class Fibonacci_dp {
         }
         return dp[n];
     }
+
+//    public static int fibosum(int n){
+//        int a = 0  , b = 1 , sum = 0 , i;
+//        for(i = 0 ; i<n ; i++){
+//            sum = a+b;
+//            a = b;
+//            b = sum;
+//        }
+//        return sum;
+//    }
 }
