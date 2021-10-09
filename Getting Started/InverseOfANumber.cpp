@@ -51,7 +51,6 @@ int main()
           {              
                mul *= 10;
                ld--;
-               
           }
         int mulnum = num * mul;
           sum = sum + mulnum ;
