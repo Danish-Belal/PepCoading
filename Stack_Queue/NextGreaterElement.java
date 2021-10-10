@@ -62,10 +62,12 @@ public class NextGreaterElement {
         int[] a = {10,6,12,5,3,2,4,8,1};
 
         int[] ngr = nextGreaterright(a);
+        int[] ngrsolve = solve(a);
         int[] ngl = nextGreaterleft(a);
         int[] nsr = nextSmallerright(a);
         int[] nsl = nextSmallerleft(a);
         display(ngr);
+        display(ngrsolve);
         display(ngl);
         display(nsr);
         display(nsl);
@@ -88,6 +90,30 @@ public class NextGreaterElement {
 
         }
         // solve
+        return ans;
+    }
+
+    public static int[] solve(int[] arr){
+        int[] ans = new int[arr.length];
+
+        Stack<Integer> st = new Stack<>();
+
+        for(int i = arr.length-1 ; i>=0 ; i--){
+            //pop all smaller Element.
+            while(st.size() > 0 && arr[st.peek()]< arr[i]){
+                st.pop();
+            }
+
+            // Update ans
+            if(st.size() == 0){
+                ans[i] = -1;
+            }else{
+                ans[i] = arr[st.peek()];
+            }
+
+            // Push current index in the stack.
+            st.push(i);
+        }
         return ans;
     }
 
