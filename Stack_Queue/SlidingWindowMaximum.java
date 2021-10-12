@@ -1,9 +1,7 @@
 package Stack_Queue;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
 /*
 1. You are given a number n, representing the size of array a.
@@ -23,7 +21,9 @@ public class SlidingWindowMaximum {
 //            System.out.print(ans.get(i) + " ");
 //        }
 
-        System.out.println(Arrays.toString(window2(arr,k)));
+        //System.out.println(Arrays.toString(window2(arr,k)));
+        window3(arr,k);
+        System.out.println(Arrays.toString(window4(arr , k)));
 
     }
     public static ArrayList<Integer> window1(int[] arr , int k){
@@ -77,5 +77,46 @@ public class SlidingWindowMaximum {
             ans[i] = arr[j];
         }
         return ans;
+    }
+
+    public static void window3(int[] arr , int k){
+        Deque<Integer> de =  new ArrayDeque<>();
+        for(int i = 0 ; i<k ; i++){
+            while(de.size() > 0 && arr[de.getLast()] < arr[i]){
+                de.removeLast();
+            }
+           de.addLast(i);
+        }
+        System.out.println(arr[de.getFirst()]);
+
+        for(int  i = k ; i<arr.length ; i++){
+            while(de.size() > 0 && arr[de.getLast()] < arr[i]){
+                de.removeLast();
+            }
+            de.addLast(i);
+            if(de.peek() <= i-k){
+                de.removeFirst();
+            }
+            System.out.println(arr[de.getFirst()]);
+        }
+    }
+    public static int[] window4(int[] num , int m){
+        int[] ret = new int[num.length - m + 1];
+        Deque<Integer> queue = new ArrayDeque<>();
+        int count = 0;
+        for (int i = 0; i < num.length; i++) { //数组下标从0开始
+            while (!queue.isEmpty() && queue.peekFirst() < i - m + 1) {
+                queue.pollFirst();
+            }
+            while (!queue.isEmpty() && num[queue.peekLast()] <= num[i]) {
+                queue.pollLast();
+            }
+            queue.offerLast(i);
+            if (i >= m - 1) {
+                System.out.println("max is " + num[queue.peek()]);
+                ret[count++] = num[queue.peek()];
+            }
+        }
+        return ret;
     }
 }
