@@ -44,7 +44,7 @@ public class InfixEvaluation {
             }else if(ch == '('){
                 st2.push(ch);
             }else if(ch == ')'){
-                while (st2.peek() != ')'){
+                while (st2.peek() != '('){
                     char oprtr = st2.pop();
                     int op2 = st1.pop();
                     int op1 = st1.pop();
