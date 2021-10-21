@@ -41,10 +41,10 @@ public class PrintPermutations {
         }
 
         for(int i = 0 ; i <str.length() ; i++){
-        char c = str.charAt(i);
-        String ros = str.substring(0 , i)+str.substring(i+1);
+             char c = str.charAt(i);
+            String ros = str.substring(0 , i)+str.substring(i+1);
+            printPermutations(ros , asf+c);
 
-        printPermutations(ros , asf+c);
-
-    }}
+        }
+    }
 }
