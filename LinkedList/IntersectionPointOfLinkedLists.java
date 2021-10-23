@@ -418,23 +418,19 @@ public class IntersectionPointOfLinkedLists {
 
         public static int findIntersection(LinkedList one, LinkedList two){
             // write your code here
-            int firstmv =0;
+
             Node ll1 = one.head;
             Node ll2 = two.head;
+            int delta = Math.abs(one.size - two.size);
             if(one.size > two.size){
-                firstmv = one.size- two.size;
-                Node temp = one.head;
-                for(int i = 0 ; i<firstmv ; i++){
-                    temp = temp.next;
+                for(int i = 0 ; i< delta ; i++){
+                    ll1 = ll1.next;
                 }
-                ll1 = temp;
-            }  else if(two.size > one.size){
-                firstmv = two.size - one.size;
-                Node temp = one.head;
-                for(int i = 0 ; i<firstmv ; i++){
-                    temp = temp.next;
+
+            } else {
+                for (int i = 0; i < delta; i++) {
+                    ll2 = ll2.next;
                 }
-                ll2 = temp;
             }
             while (ll1 != ll2){
                 ll1 = ll1.next;
