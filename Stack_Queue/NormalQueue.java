@@ -106,7 +106,6 @@ public class NormalQueue {
             // write ur code here
             if(data.length ==  size){
                 System.out.println("Queue overflow");
-                return;
             }else {
                 int rear = (front + size) % data.length;
                 data[rear] = val;
