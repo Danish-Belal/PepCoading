@@ -1,7 +1,6 @@
 package SelfCode;
 
 public class LL {
-
     Node head;
     Node tail;
     int size;
@@ -35,32 +34,30 @@ public class LL {
         size+=1;
    }
    public void insertdAtEnd(int val){
-        Node temp = new Node(val);
-        temp.data = val;
-        Node a = head;
-        while(a != tail){
-            a = a.next;
-        }
-        a.next = temp;
-        temp.next = null;
-        tail = temp;
-
-        size++;
+       if(tail==null){
+           insertAtFirst(val);
+           return;
+       }
+       Node temp = new Node(val);
+       tail.next = temp;
+       tail= temp;
+       temp.next = null;
+       size+=1;
    }
 
    public void insertAtIndex(int val , int index){
         if(index > size){
             System.out.println("Invalid index");
         }
-        Node temp = new Node(val);
-        temp.data = val;
-
         if(index == 0){
             insertAtFirst(val);
+            return;
         }
-        if(index == size){
+        if(index == size+1){
             insertdAtEnd(val);
-        }else if(index > 0 && index<size) {
+            return;
+        }else  {
+            Node temp = new Node(val);
             Node n = head;
             for (int i = 0; i < index - 1; i++) {
                 n = n.next;
@@ -88,7 +85,6 @@ public class LL {
         l.insertAtFirst(20);
         l.insertAtFirst(30);
         l.insertAtFirst(40);
-    //    l.display();
         l.insertdAtEnd(50);
         l.insertdAtEnd(60);
         l.insertdAtEnd(70);
@@ -96,7 +92,7 @@ public class LL {
         l.insertAtIndex(65 , 3);
         l.insertAtIndex(5,0);
         l.insertAtIndex(8,0);
-        
+        l.insertAtIndex(9,12);
         l.display();
         System.out.println(l.size);
 
