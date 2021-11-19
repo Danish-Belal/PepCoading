@@ -68,6 +68,61 @@ public class LL {
         size++;
    }
 
+   public int deleteFirst(){
+        if(head == null){
+            System.out.println("Empty Linked List");
+            return -1;
+        }
+        if(size == 1){
+            int val = head.data;
+            head = null;
+            tail = null;
+            return val;
+        }
+        int val = head.data;
+        head = head.next;
+        size--;
+        return val;
+   }
+
+    public int deleteLast(){
+        if(tail == null){
+            System.out.println("Empty linked List");
+            return -1;
+        }
+        int val = tail.data;
+        Node temp = head;
+        while(temp.next != tail){
+            temp = temp.next;
+       }
+        temp.next = null;
+        tail = temp;
+        size--;
+
+        return val;
+   }
+
+   public int deleteIndex(int index){
+        if(index > size){
+            System.out.println("Invalid Index");
+            return -1;
+        }
+        if(index == 0){
+            return deleteFirst();
+        }
+        if(index == size-1){
+            return  deleteLast();
+        }
+        Node pre = head;
+        for(int i = 0 ; i<index-1 ; i++){
+            pre = pre.next;
+        }
+        int val = pre.next.data;
+        pre.next = pre.next.next;
+        size--;
+        return val;
+   }
+
    public void display(){
         Node n = head;
         while(n != tail){
@@ -89,14 +144,16 @@ public class LL {
         l.insertdAtEnd(60);
         l.insertdAtEnd(70);
         l.insertdAtEnd(80);
-        l.insertAtIndex(65 , 3);
+        l.insertAtIndex(65,3);
         l.insertAtIndex(5,0);
         l.insertAtIndex(8,0);
         l.insertAtIndex(9,12);
+        System.out.println(l.deleteFirst());
+        System.out.println(l.deleteLast());
         l.display();
-        System.out.println(l.size);
-
-
+//        System.out.println(l.size);
+        System.out.println(l.deleteIndex(4));
+        l.display();
     }
 
 }
