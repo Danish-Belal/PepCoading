@@ -1,5 +1,7 @@
 package SelfCode;
 
+import LeetCode.ConvertBinaryNumberinaLinkedListtoInteger;
+
 public class LL {
     Node head;
     Node tail;
@@ -24,7 +26,6 @@ public class LL {
 
    public void insertAtFirst(int val){
         Node n = new Node(val);
-        n.data = val;
         n.next = head;
         head = n;
 
@@ -133,27 +134,79 @@ public class LL {
        System.out.println();
    }
 
+   // USed for Leet Code
+    public int getDecimalValue(Node head) {
+       Node temp = head;
+        int digit = 0;
+        int pow =1;
+        while (temp != null){
+            int tempval = temp.data;
+            digit *=pow;
+            digit += tempval;
+            pow = 10;
+            temp = temp.next;
+        }
+
+        return  getDecimal(digit);
+    }
+
+
+        public  int getDecimal(int binary){
+            int decimal = 0;
+            int n = 0;
+            while(true){
+                if(binary == 0){
+                    break;
+                } else {
+                    int temp = binary%10;
+                    decimal += temp*Math.pow(2, n);
+                    binary = binary/10;
+                    n++;
+                }
+            }
+            return decimal;
+        }
+
 
     public static void main(String[] args) {
-        LL l = new LL();
-        l.insertAtFirst(10);
-        l.insertAtFirst(20);
-        l.insertAtFirst(30);
-        l.insertAtFirst(40);
-        l.insertdAtEnd(50);
-        l.insertdAtEnd(60);
-        l.insertdAtEnd(70);
-        l.insertdAtEnd(80);
-        l.insertAtIndex(65,3);
-        l.insertAtIndex(5,0);
-        l.insertAtIndex(8,0);
-        l.insertAtIndex(9,12);
-        System.out.println(l.deleteFirst());
-        System.out.println(l.deleteLast());
-        l.display();
-//        System.out.println(l.size);
-        System.out.println(l.deleteIndex(4));
-        l.display();
+//        LL l = new LL();
+//        l.insertAtFirst(10);
+//        l.insertAtFirst(20);
+//        l.insertAtFirst(30);
+//        l.insertAtFirst(40);
+//        l.insertdAtEnd(50);
+//        l.insertdAtEnd(60);
+//        l.insertdAtEnd(70);
+//        l.insertdAtEnd(80);
+//        l.insertAtIndex(65,3);
+//        l.insertAtIndex(5,0);
+//        l.insertAtIndex(8,0);
+//        l.insertAtIndex(9,12);
+//        System.out.println(l.deleteFirst());
+//        System.out.println(l.deleteLast());
+//        l.display();
+////        System.out.println(l.size);
+//        System.out.println(l.deleteIndex(4));
+//        l.display();
+
+        LL list = new LL();
+        list.insertAtFirst(1);
+        list.insertdAtEnd(0);
+        list.insertdAtEnd(0);
+        list.insertdAtEnd(1);
+        list.insertdAtEnd(0);
+        list.insertdAtEnd(0);
+        list.insertdAtEnd(1);
+        list.insertdAtEnd(1);
+        list.insertdAtEnd(1);
+        list.insertdAtEnd(0);
+        list.insertdAtEnd(0);
+        list.insertdAtEnd(0);
+        list.insertdAtEnd(0);
+        list.insertdAtEnd(0);
+        list.insertdAtEnd(0);
+        int val = list.getDecimalValue(list.head);
+        System.out.println(val);
     }
 
 }
