@@ -1,6 +1,7 @@
 package SelfCode;
 
 import LeetCode.ConvertBinaryNumberinaLinkedListtoInteger;
+import LeetCode.SortLL;
 
 public class LL {
     Node head;
@@ -167,6 +168,55 @@ public class LL {
             return decimal;
         }
 
+        // To get a Node at a Particual index.
+    public  Node get(int idx){
+        Node temp= head;
+        for(int i = 0 ; i<idx ; i++){
+            temp = temp.next;
+        }
+        return  temp;
+    }
+
+
+
+    // SOrt Linked List using Recursion apply Bubble Sort on it.
+    public  void BubbleSort(){
+        BubbleSort(size-1 , 0);
+
+    }
+    public void BubbleSort(int row , int col){
+        if(row == 0){
+            return;
+        }
+        if(col < row){
+            Node first = get(col);
+            Node second = get(col+1);
+
+            if(first.data > second.data){
+                // Swap
+                if(first == head){
+                    head = second;
+                    first.next = second.next;
+                    second.next = first;
+                }else if(second == tail){
+                    Node pre = get(col-1);
+                    pre.next = second;
+                    tail = first;
+                    first.next = null;
+                    second.next = tail;
+                }else{
+                    Node pre  = get(col-1);
+                    pre.next = second;
+                    first.next = second.next;
+                    second.next = null;
+                }
+            }
+            BubbleSort(row , col+1);
+        }else{
+            BubbleSort(row-1 , 0);
+        }
+    }
+
 
     public static void main(String[] args) {
 //        LL l = new LL();
@@ -189,24 +239,36 @@ public class LL {
 //        System.out.println(l.deleteIndex(4));
 //        l.display();
 
-        LL list = new LL();
-        list.insertAtFirst(1);
-        list.insertdAtEnd(0);
-        list.insertdAtEnd(0);
-        list.insertdAtEnd(1);
-        list.insertdAtEnd(0);
-        list.insertdAtEnd(0);
-        list.insertdAtEnd(1);
-        list.insertdAtEnd(1);
-        list.insertdAtEnd(1);
-        list.insertdAtEnd(0);
-        list.insertdAtEnd(0);
-        list.insertdAtEnd(0);
-        list.insertdAtEnd(0);
-        list.insertdAtEnd(0);
-        list.insertdAtEnd(0);
-        int val = list.getDecimalValue(list.head);
-        System.out.println(val);
+//        LL list = new LL();
+//        list.insertAtFirst(1);
+//        list.insertdAtEnd(0);
+//        list.insertdAtEnd(0);
+//        list.insertdAtEnd(1);
+//        list.insertdAtEnd(0);
+//        list.insertdAtEnd(0);
+//        list.insertdAtEnd(1);
+//        list.insertdAtEnd(1);
+//        list.insertdAtEnd(1);
+//        list.insertdAtEnd(0);
+//        list.insertdAtEnd(0);
+//        list.insertdAtEnd(0);
+//        list.insertdAtEnd(0);
+//        list.insertdAtEnd(0);
+//        list.insertdAtEnd(0);
+//        int val = list.getDecimalValue(list.head);
+//        System.out.println(val);
+
+
+        // Used for LL Bubble Sort.
+        LL l = new LL();
+        l.insertdAtEnd(150);
+        l.insertdAtEnd(103);
+        l.insertdAtEnd(120);
+        l.insertdAtEnd(104);
+        l.insertdAtEnd(50);
+        l.display();
+        l.BubbleSort();
+        l.display();
     }
 
 }
