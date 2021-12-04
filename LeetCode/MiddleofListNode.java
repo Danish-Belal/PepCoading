@@ -7,6 +7,7 @@ If there are two middle nodes, return the second middle node.
 Input: head = [1,2,3,4,5,6]
 Output: [4,5,6]
 Explanation: Since the list has two middle nodes with values 3 and 4, we return the second one.
+
  */
 public class MiddleofListNode {
     public class ListNode {
@@ -16,19 +17,25 @@ public class MiddleofListNode {
       ListNode(int val) { this.val = val; }
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
   }
+
     public ListNode middleNode(ListNode head) {
-        ListNode fast = head;
-        ListNode slow = head;
+//        ListNode fast = head;
+//        ListNode slow = head;
+//
+//        while(fast != null && fast.next != null){
+//            fast = fast.next.next;
+//            slow = slow.next;
+//        }
+//        return slow;
 
-        while(fast.next != null && fast.next.next != null){
-            fast = fast.next.next;
-            slow = slow.next;
+        ListNode midPrev = null;
+        while(head != null && head.next != null){
+            midPrev =( midPrev == null)  ? head : midPrev.next;
+            head = head.next.next;
         }
-        if(fast.next != null){
-            slow = slow.next;
-        }
-
-        return (head=slow);
+        ListNode mid = midPrev.next;
+        midPrev.next = null;
+        return mid;
 
 
     }
