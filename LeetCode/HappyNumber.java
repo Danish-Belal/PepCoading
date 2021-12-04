@@ -39,7 +39,7 @@ public class HappyNumber {
         }
         return ans;
     }
-    
+
     public boolean isHappy(int n) {
         int slow = n;
         int fast = n;
