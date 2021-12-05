@@ -11,7 +11,7 @@ public class LL {
         this.size =0;
     }
 
-   private class Node{
+    private class Node{
        int data;
        Node next;
 
@@ -208,7 +208,7 @@ public class LL {
                     Node pre  = get(col-1);
                     pre.next = second;
                     first.next = second.next;
-                    second.next = null;
+                    second.next = first;
                 }
             }
             BubbleSort(row , col+1);
@@ -216,6 +216,8 @@ public class LL {
             BubbleSort(row-1 , 0);
         }
     }
+
+
 
 
     public static void main(String[] args) {
