@@ -59,36 +59,48 @@ public class RemoveDuplicate {
 
 
     public ListNode removeElements(ListNode head, int val) {
-        if (head == null || head.next == null && head.val != val) {
-            return head;
+//        if (head == null || head.next == null && head.val != val) {
+//            return head;
+//        }
+//        if (head.val == val && head.next == null) {
+//            return null;
+//        }
+//        ListNode pre = null;
+//        ListNode curr = head;
+//        ListNode ret = pre;
+//
+//        do {
+//                if (curr.val == val) {
+//                    curr = curr.next;
+//                } else {
+//                    if (pre == null) {
+//                        pre = curr;
+//                        curr = curr.next;
+//                        ret = pre;
+//                    } else {
+//                        pre.next = curr;
+//                        pre = curr;
+//                        curr = curr.next;
+//                    }
+//                }
+//            }while (pre.next != null);
+//
+//            return ret.next;
+
+        while(head != null && head.val == val){
+            head = head.next;
         }
-        if (head.val == val && head.next == null) {
-            return null;
+
+        ListNode current_Node = head;
+        while(current_Node != null && current_Node.next != null){
+            if(current_Node.next.val == val){
+                current_Node.next = current_Node.next.next;
+            }else{
+                current_Node = current_Node.next;
+            }
         }
-        ListNode pre = null;
-        ListNode curr = head;
-        ListNode ret = pre;
+        return head;
 
-        do {
-                if (curr.val == val) {
-                    curr = curr.next;
-                } else {
-                    if (pre == null) {
-                        pre = curr;
-                        curr = curr.next;
-                        ret = pre;
-                    } else {
-                        pre.next = curr;
-                        pre = curr;
-                        curr = curr.next;
-                    }
-                }
-            }while (pre.next != null);
-
-            return ret.next;
-
-
-        }
     }
 
 }
