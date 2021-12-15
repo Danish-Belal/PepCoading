@@ -15,15 +15,35 @@ Output: false
  */
 public class PowerOfFour {
     public static void main(String[] args) {
+      //  int n = 56;
         int n = 16;
         boolean ans = isPowerOfFour(n);
         System.out.println(ans);
 
     }
     public static boolean isPowerOfFour(int n) {
+//        if(n <= 0) return false;
+//        if(n==1 || n==4 ) return true ;
+//        return n%4 == 0 && isPowerOfFour(n/4) ;
+
+        // Another Approach
+//        if(n==1||n==4) return true ;
+//        if(n==0||n<0) return false;
+//        if(n%4==0){
+//            return isPowerOfFour(n/4);
+//        }else return false ;
+
+
+
+        // Another Approach
         if(n <= 0) return false;
-        if(n==1 || n==4 ) return true ;
-        return n%4 == 0 && isPowerOfFour(n/4) ;
+        else {
+            while (n>1) {
+                if(n%4!=0) return false;
+                n/=4;
+            }
+        }
+        return true;
 
     }
 }
