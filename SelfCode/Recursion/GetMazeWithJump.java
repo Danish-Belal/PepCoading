@@ -48,22 +48,27 @@ public class GetMazeWithJump {
             base.add("");
             return base;
         }
-
-        ArrayList<String> rr1 = getMazePaths(sr , sc+1 , dr , dc);
-        ArrayList<String> cc1 = getMazePaths(sr+1 , sc, dr , dc);
-        ArrayList<String> dd1 = getMazePaths(sr+1 , sc+1 , dr , dc);
-
         ArrayList<String> mr = new ArrayList<>();
 
-        for (String i : rr1){
-            mr.add("h1"+i);
+        for(int jump = 1 ; jump <= dc-sc ; jump++){
+            ArrayList<String> rr1 = getMazePaths(sr , sc+jump , dr , dc);
+            for (String i : rr1){
+                mr.add("h"+jump+i);
+            }
         }
-        for (String i : cc1){
-            mr.add("v1"+i);
+        for(int jump = 1 ; jump <= dr-sr ; jump++){
+            ArrayList<String> rr1 = getMazePaths(sr+jump , sc , dr , dc);
+            for (String i : rr1){
+                mr.add("v"+jump+i);
+            }
         }
-        for (String i : dd1){
-            mr.add("d1"+i);
+        for(int jump = 1 ; jump <= dc-sc && jump <= dr-sr ; jump++){
+            ArrayList<String> rr1 = getMazePaths(sr+jump , sc+jump , dr , dc);
+            for (String i : rr1){
+                mr.add("d"+jump+i);
+            }
         }
+
         return mr;
 
     }
