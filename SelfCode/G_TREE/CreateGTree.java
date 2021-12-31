@@ -1,7 +1,8 @@
 package SelfCode.G_TREE;
-
-import GenericTree.Tree;
-
+/*
+        Generic Tree is a tree which can have n number of child.
+        It has a node data and arrayList od Node which contain address of Children Node.
+ */
 import java.util.ArrayList;
 import java.util.Stack;
 
