@@ -1,6 +1,7 @@
 package SelfCode.G_TREE;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 import java.util.ArrayList;
 
@@ -67,12 +68,12 @@ public class NodeToRootPathInGenericTree {
     }
 
     public static void main(String[] args) {
-        int[] arr = {};
+        int[] arr = {10,20,50,-1 , 60 , -1,-1,30 , 70,-1,90,-1,-1,40,100,-1,-1,-1};
         Node root = construct(arr);
-        int data = 40;
+        int data = 50;
         ArrayList<Integer> ans = nodeToRootPath(root , data);
-       for(int i  =0 ; i<ans.size() ; i++){
-           System.out.print(i+" ");
-       }
+        System.out.println(ans);
+
+        List<List<String>> a = new ArrayList<>();
     }
 }
