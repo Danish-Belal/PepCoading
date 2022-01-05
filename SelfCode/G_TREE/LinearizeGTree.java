@@ -171,6 +171,20 @@ public class LinearizeGTree {
         }
     }
 
+    public static  Node Linearized2(Node node){
+        if(node.children.size() == 0){
+            return node;
+        }
+        Node tail = Linearized2(node.children.get(node.children.size()-1));
+        while(node.children.size() > 1){
+            Node scTail = Linearized2(node.children.get(node.children.size()-2));
+            Node lc = node.children.get(node.children.size()-1);
+            scTail.children.add(lc);
+            node.children.remove(node.children.size()-1);
+        }
+        return tail;
+    }
+
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -181,7 +195,8 @@ public class LinearizeGTree {
         }
 
         Node root = construct(arr);
-        linearize(root);
+      //  linearize(root);
+        Linearized2(root);
         display(root);
     }
 }
