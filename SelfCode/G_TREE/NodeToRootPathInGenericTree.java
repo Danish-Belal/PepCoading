@@ -63,17 +63,62 @@ public class NodeToRootPathInGenericTree {
              return call;
          }
        }
-
        return new ArrayList<>();
     }
 
+
+    /*
+    1. You are given a partially written GenericTree class.
+    2. You are required to complete the body of lca function.
+            The function is expected to return the lowest common ancestor of two data values that are passed to it.
+     */
+    public static int lca(Node node, int d1, int d2) {
+        // write your code here
+        ArrayList<Integer> root1 = nodeToRootPath(node , d1);
+        ArrayList<Integer> root2 = nodeToRootPath(node , d2);
+
+//        System.out.println(root1);
+//        System.out.println(root2);
+
+        int i = root1.size()-1;
+        int j = root2.size()-1;
+        while(i >=0 && j>=0 && root1.get(i) == root2.get(j)){
+            i--;
+            j--;
+        }
+        return root1.get(i+1);
+    }
+
+    public static int distanceBetweenNodes(Node node, int d1, int d2){
+        // write your code here
+        ArrayList<Integer> root1 = nodeToRootPath(node , d1);
+        ArrayList<Integer> root2 = nodeToRootPath(node , d2);
+        int i = root1.size()-1;
+        int j = root2.size()-1;
+        while(i >=0 && j>=0 && root1.get(i) == root2.get(j)){
+            i--;
+            j--;
+        }
+        System.out.println(root1);
+        System.out.println(root2);
+        System.out.println(i);
+        System.out.println(j);
+
+        return ((++i) +(++j));
+
+    }
+
+
     public static void main(String[] args) {
-        int[] arr = {10,20,50,-1 , 60 , -1,-1,30 , 70,-1,90,-1,-1,40,100,-1,-1,-1};
+        int[] arr = {10 ,20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1 ,-1, 90, -1, -1, 40 ,100, -1 ,-1 ,-1};
         Node root = construct(arr);
         int data = 50;
-        ArrayList<Integer> ans = nodeToRootPath(root , data);
-        System.out.println(ans);
+//        ArrayList<Integer> ans = nodeToRootPath(root , data);
+//        System.out.println(ans);
 
-        List<List<String>> a = new ArrayList<>();
+       // System.out.println(lca(root , 100,110));
+        System.out.println(distanceBetweenNodes(root , 100,110));
+
+
     }
 }
