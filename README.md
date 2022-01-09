@@ -2,7 +2,7 @@
 PepCoding  DSA Course Beginner to Advance
 
 
-PepCoading has made this Couse "Data Structure and Algorithm in Java" .
+PepCoading has made this Course "Data Structure and Algorithm in Java" .
 
 There are some good thing about PepCoading is, they have divided their entire course into 3 module .
 
