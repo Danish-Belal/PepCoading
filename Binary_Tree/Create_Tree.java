@@ -1,5 +1,7 @@
 package Binary_Tree;
 
+import java.util.*;
+
 public class Create_Tree {
     private static class Node{
         int val;
@@ -50,17 +52,45 @@ public class Create_Tree {
         System.out.print(root.val+" ");
     }
 
+
+    public static void BSFPrint(Node root){
+        if(root == null) return;
+        Queue<Node> Q = new ArrayDeque<>();
+        Q.offer(root);
+        while (Q.size() > 0){
+           Node n = Q.poll();
+            System.out.print(n.val +" ");
+            if(n.left != null)  Q.add(n.left);
+            if(n.right != null)Q.add(n.right);
+
+        }
+
+    }
+
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
         root.left.right = new Node(4);
-      //  display(root);
+
+        System.out.print("Print Tree -> ");
+        display(root);
+        System.out.println();
+
+        System.out.print("Inorder Traversal ->");
         inOrder(root);
         System.out.println();
+        System.out.print("preorder Traversal -> ");
         PreOrder(root);
         System.out.println();
+        System.out.print("Postorder Traversal -> ");
         PostOrder(root);
+        System.out.println();
+
+        System.out.print("BSF Traversal -> ");
+        BSFPrint(root);
+
 
     }
 }
