@@ -28,10 +28,10 @@ public class Binary_Tree2 {
     }
     public  static Node create(Integer[] arr){
         Node root = new Node(arr[0] , null , null);
-       Stack<pair> s = new Stack<>();
+        Stack<pair> s = new Stack<>();
+        s.push(new pair(root , 0));
 
-       s.push(new pair(root , 0));
-      for(int i =1 ; i<arr.length ; i++){
+       for(int i =1 ; i<arr.length ; i++){
           if(arr[i] == null){
               s.peek().state++;
               if(s.peek().state == 2){
@@ -40,9 +40,9 @@ public class Binary_Tree2 {
           }else{
               Node nn= new Node(arr[i] , null , null);
               pair tos = s.peek();
-              if(tos.state == 1){
+              if(tos.state == 0){
                   tos.node.left = nn;
-              }else{
+              }else if(tos.state == 1){
                   tos.node.right = nn;
               }
               tos.state++;
@@ -53,16 +53,25 @@ public class Binary_Tree2 {
           }
       }
       return root;
-
     }
 
-    static void display(Node root){
+    static void display(Node node){
+        if(node == null) return;
+
+        String str = "";
+        str += node.left == null ? "." : node.left.data + "";
+        str += " <- " + node.data + " -> ";
+        str += node.right == null ? "." : node.right.data + "";
+        System.out.println(str);
+        display(node.left);
+        display(node.right);
 
     }
 
     public static void main(String[] args) {
         Integer[] arr = {10,20,40,null , 80,null,null,50,null,null , 30,null , 60,70,null,null , null};
-        create(arr);
+       Node root =  create(arr);
+        display(root);
 
     }
 }
