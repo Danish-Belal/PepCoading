@@ -56,11 +56,16 @@ public class MaximizeDistancetoClosestPerson {
        if(seats[0] == 0) ct = 1;
 
        while(j < seats.length){
+           while(seats[i] == 1){
+               j++;
+               ct++;
+           }
 
-
+           i = j;
+           if(ct > max){
+               max = ct;
+           }
        }
-
-
 
        return  max;
     }
