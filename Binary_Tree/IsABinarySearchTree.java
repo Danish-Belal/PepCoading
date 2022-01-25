@@ -149,6 +149,22 @@ public class IsABinarySearchTree {
         return ans;
     }
 
+    // Another Approach.
+   static long prev = Long.MIN_VALUE;
+    public static boolean isValidBST(Node root) {
+
+        if(root==null)
+            return true;
+        if(isValidBST(root.left)==false)
+            return false;
+        if(root.data<=prev)
+            return false;
+        prev=root.data;
+        return isValidBST(root.right);
+
+
+    }
+
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -165,7 +181,10 @@ public class IsABinarySearchTree {
         Node root = construct(arr);
 
        // System.out.println(isBST(root));
-        Triplate ans = solution(root);
-        System.out.println(ans.isBST);
+//        Triplate ans = solution(root);
+//        System.out.println(ans.isBST);
+
+        // Another Approach.
+        System.out.println(isValidBST(root));
     }
 }
