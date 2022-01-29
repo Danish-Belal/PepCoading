@@ -49,17 +49,35 @@ public class KLargestElements {
         // write your code here
 
         PriorityQueue<Integer> pq = new PriorityQueue<>();
-        for(int i : arr){
-            pq.offer(i);
+
+        // this have nlogn time complexity.
+//        for(int i : arr){
+//            pq.offer(i);
+//        }
+//
+//        for(int i = 0 ; i<arr.length-k ; i++){
+//            pq.poll();
+//        }
+//        while(pq.size() != 0){
+//            System.out.println(pq.poll());
+//        }
+
+        // Another Appraoch.
+
+        for(int i = 0 ; i<k ; i++){
+            pq.offer(arr[i]);
         }
 
-        for(int i = 0 ; i<arr.length-k ; i++){
-            pq.poll();
+        for(int i = k ; i<arr.length ; i++){
+            if(arr[i] > pq.peek()){
+                pq.poll();
+                pq.offer(arr[i]);
+            }
         }
+
         while(pq.size() != 0){
             System.out.println(pq.poll());
         }
-
 
 
     }
