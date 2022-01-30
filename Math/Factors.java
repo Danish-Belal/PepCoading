@@ -9,9 +9,9 @@ import java.util.*;
 // All numbers which can completly divide a number is konwn as factor of that number.
 public class Factors {
     public static void main(String[] args) {
-       // Factor1(20);
-       // Factor2(12);
-        System.out.println(kthFactor(12, 3));   //Find kth Factor of a Number.
+        Factor1(122690412);
+      //  Factor2(18);
+       // System.out.println(kthFactor(12, 3));   //Find kth Factor of a Number.
 
     }
     public static void Factor1(int n){    // Brute force Approach . o(N) Time Complexity
