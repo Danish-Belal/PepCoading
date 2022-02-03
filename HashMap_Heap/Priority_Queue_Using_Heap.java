@@ -57,13 +57,25 @@ public class Priority_Queue_Using_Heap {
             data = new ArrayList<>();
         }
 
+        // Making it o(n) by using constructor of Priority Queue.
+        public PriorityQueue(int[] arr){
+            data = new ArrayList<>();
+            for(int i = 0 ; i<arr.length ; i++){
+                data.add(arr[i]);
+            }
+
+            for(int i  = (data.size()/2)-1 ; i >=0 ; i--){
+                downheapfy(i);
+            }
+        }
+
         public void add(int val) {
             // write your code here
             data.add(val);
-            unheapfy(data.size()-1);
+            upheapfy(data.size()-1);
         }
 
-        public void unheapfy( int ci){
+        public void upheapfy( int ci){
             if(ci == 0) {
                 return;
             }
@@ -71,7 +83,7 @@ public class Priority_Queue_Using_Heap {
             int pi = (ci-1)  /2;
             if( data.get(ci) < data.get(pi)){
                swap(ci , pi);
-                unheapfy(pi);
+                upheapfy(pi);
             }
         }
 
@@ -128,28 +140,38 @@ public class Priority_Queue_Using_Heap {
     }
 
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        PriorityQueue qu = new PriorityQueue();
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        PriorityQueue qu = new PriorityQueue();
+//
+//        String str = br.readLine();
+//        while (str.equals("quit") == false) {
+//            if (str.startsWith("add")) {
+//                int val = Integer.parseInt(str.split(" ")[1]);
+//                qu.add(val);
+//            } else if (str.startsWith("remove")) {
+//                int val = qu.remove();
+//                if (val != -1) {
+//                    System.out.println(val);
+//                }
+//            } else if (str.startsWith("peek")) {
+//                int val = qu.peek();
+//                if (val != -1) {
+//                    System.out.println(val);
+//                }
+//            } else if (str.startsWith("size")) {
+//                System.out.println(qu.size());
+//            }
+//            str = br.readLine();
+//        }
+        // without constructor its takes nlogn time .
 
-        String str = br.readLine();
-        while (str.equals("quit") == false) {
-            if (str.startsWith("add")) {
-                int val = Integer.parseInt(str.split(" ")[1]);
-                qu.add(val);
-            } else if (str.startsWith("remove")) {
-                int val = qu.remove();
-                if (val != -1) {
-                    System.out.println(val);
-                }
-            } else if (str.startsWith("peek")) {
-                int val = qu.peek();
-                if (val != -1) {
-                    System.out.println(val);
-                }
-            } else if (str.startsWith("size")) {
-                System.out.println(qu.size());
-            }
-            str = br.readLine();
+        // Converting Priority Queue into o(n) by making its constructor and on down calling downHeapfy.
+        int[] arr = {16,4,3,5,7,8,2,457,68,234};
+        PriorityQueue pq = new PriorityQueue(arr);
+        while(pq.size() > 0){
+            System.out.println(pq.remove());
         }
+
+
     }
 }
