@@ -115,8 +115,26 @@ public class Generic_Priority_Queue {
         mpq.add(new Student("C" , 196 , 80 , 7));
         mpq.add(new Student("D" , 189 , 820 ,3));
 
-        while(mpq.size() > 0){
-            System.out.println(mpq.remove());
+//        while(mpq.size() > 0){
+//            System.out.println(mpq.remove());
+//        }
+
+
+        // This is o(nlog) time complexity for inserting n element in Queue.
+
+        MyPriorityQueue<Integer> m = new  MyPriorityQueue<>();
+        m.add(10);
+        m.add(20);
+        m.add(30);
+        m.add(40);
+        m.add(50);
+        m.add(60);
+
+        while(m.size() > 0){
+            System.out.println(m.remove());
         }
+
+
+
     }
 }
