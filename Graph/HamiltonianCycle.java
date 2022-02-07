@@ -6,27 +6,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
-1. A Hamiltonian path, is a path in an undirected or directed graph that visits each vertex exactly
 
-     once.
+1. You are given a graph and a src vertex.
 
-2. Given an undirected graph  the task is to check if a Hamiltonian path is present in it or not.
-Constraints
+2. You are required to find and print all hamiltonian paths and cycles starting from src.
+The cycles must end with "*" and paths with a "."
 
-1&lt;=N&lt;=10
 
-1&lt;=M&lt;=15
 
-Format
-Input
+Note -> A hamiltonian path is such which visits all vertices without visiting any twice.
+A hamiltonian path becomes a cycle if there is an edge between first and last vertex.
 
-First line consists of two space separated integers N and M denoting the number of vertices and number of edges.
-
-Second line contains 2*M space separated integers denoting the edge from 2*i th element to 2*i+1 th element.
-Output
-
-Print the boolean value.
-Example
+Note -> Print in lexicographically increasing order.
 
 Sample Input
 
@@ -42,9 +33,13 @@ Sample Input
 4 6 10
 2 5 10
 0
-Sample Output
 
-true
+Sample Output
+0123456.
+0123465.
+0125643*
+0346521*
+
  */
 public class HamiltonianCycle {
 
