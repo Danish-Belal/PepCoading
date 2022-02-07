@@ -13,9 +13,7 @@ public class Implement_Graph {
             this.wt = wt;
         }
     }
-    public static void printpairs(ArrayList<pair> l){
 
-    }
     public static void print(ArrayList<pair>[] graph){
 
         for(int i = 0 ; i<graph.length ; i++){
