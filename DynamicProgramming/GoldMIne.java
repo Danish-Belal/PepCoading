@@ -50,18 +50,21 @@ public class GoldMIne {
             }
         }
 
-     //   System.out.println(maxGold(maze));
-
         // Recursive Approach
+        int[][] dp = new int[n][m];
         int max =0;
         for(int i =0 ; i<n;i++) {
-           max = Math.max(max , (maxgold(maze, i, 0, n, m)));
+            max = Math.max(max , (maxgold(maze, i, 0, n, m , dp)));
         }
         System.out.println(max);
 
+        // Tabulation.
+        System.out.println(maxGold(maze));
+
+
     }
 
-    static int maxgold(int[][] maze , int sr ,int sc , int dr , int dc){
+    static int maxgold(int[][] maze , int sr ,int sc , int dr , int dc , int[][] dp){
 
         if(sr >= dr || sc >= dc || sr < 0 || sc < 0){
             return 0;
@@ -70,11 +73,13 @@ public class GoldMIne {
             return maze[sr][sc];
         }
 
-        int s1 = maxgold(maze , sr-1 , sc+1 , dr , dc );
-        int s2 = maxgold(maze , sr , sc+1 , dr , dc );
-        int s3 = maxgold(maze , sr+1 , sc+1 , dr , dc );
+        if(dp[sr][sc] != 0) return dp[sr][sc];
 
-        return Math.max(s2 , Math.max(s1,s3)) + maze[sr][sc];
+        int s1 = maxgold(maze , sr-1 , sc+1 , dr , dc , dp );
+        int s2 = maxgold(maze , sr , sc+1 , dr , dc ,dp);
+        int s3 = maxgold(maze , sr+1 , sc+1 , dr , dc , dp );
+
+        return dp[sr][sc] =  Math.max(s2 , Math.max(s1,s3)) + maze[sr][sc];
 
     }
 
