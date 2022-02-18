@@ -24,7 +24,7 @@ Explanation:
 These are the only two combinations.
  */
 public class CombinationSum {
-    public List<List<Integer>> combinationSum(int[] cands, int t) {
+    public  static List<List<Integer>> combinationSum(int[] cands, int t) {
         Arrays.sort(cands); // sort candidates to try them in asc order
         List<List<List<Integer>>> dp = new ArrayList<>();
         for (int i = 1; i <= t; i++) { // run through all targets from 1 to t
@@ -45,6 +45,15 @@ public class CombinationSum {
             dp.add(newList);
         }
         return dp.get(t-1);
+
+    }
+
+    public static void main(String[] args){
+        int[] arr = {2,3,6,7};
+        int t = 7;
+
+        List<List<Integer>> l  = combinationSum(arr , t);
+        System.out.println(l);
 
     }
 }
