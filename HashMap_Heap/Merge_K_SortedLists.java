@@ -49,9 +49,7 @@ public class Merge_K_SortedLists {
            ArrayList<Integer> list = lists.get(i);
            Q.add(new pair(list.get(0) , i , 0));
        }
-
-
-
+       
        while(Q.size() > 0){
            pair rp = Q.poll();
            ans.add(rp.val);
@@ -61,10 +59,6 @@ public class Merge_K_SortedLists {
        }
        return ans;
     }
-
-
-
-
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -78,7 +72,6 @@ public class Merge_K_SortedLists {
             for(int j = 0; j < n; j++){
                 list.add(Integer.parseInt(elements[j]));
             }
-
             lists.add(list);
         }
 
@@ -87,8 +80,6 @@ public class Merge_K_SortedLists {
             System.out.print(val + " ");
         }
         System.out.println();
-
-
     }
 
 
