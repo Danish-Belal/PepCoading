@@ -49,7 +49,7 @@ public class Merge_K_SortedLists {
            ArrayList<Integer> list = lists.get(i);
            Q.add(new pair(list.get(0) , i , 0));
        }
-       
+
        while(Q.size() > 0){
            pair rp = Q.poll();
            ans.add(rp.val);
