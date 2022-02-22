@@ -42,8 +42,12 @@ public class TargetSumSubsets {
             arr[i]= scn.nextInt();
         }
         int t = scn.nextInt();
-        Boolean[][]  dp  = new Boolean[n][t+1];
-        System.out.println(target(arr , 0 ,  t ,dp));
+
+//        Boolean[][]  dp  = new Boolean[n][t+1];
+//        System.out.println(target(arr , 0 ,  t ,dp));
+
+        System.out.println(tssTab(arr , t));
+
 
     }
 
@@ -62,4 +66,22 @@ public class TargetSumSubsets {
 
     }
 
+    static boolean tssTab(int[] arr , int target){
+        boolean[][] dp = new boolean[arr.length+1][target+1];
+
+        // Filling 0th col with true(Target 0 is always possible)
+        for(int i = 0 ; i<dp.length ; i++){
+            dp[i][0] = true;
+        }
+
+        for(int i =1 ; i<dp.length ; i++){
+            for(int j =1 ; j<dp[0].length ; j++){
+                dp[i][j] = dp[i-1][j];
+                if(!dp[i][j] && j-arr[i-1] >=0){
+                    dp[i][j] = dp[i][j-arr[i-1]];
+                }
+            }
+        }
+        return dp[dp.length-1][dp[0].length-1];
+    }
 }
