@@ -59,10 +59,23 @@ public class ZeroOneKnapSack {
         }
 
         int cap = scn.nextInt();
-        System.out.println(knapSack01(prices , wts , cap));
+       // System.out.println(knapSack01(prices , wts , cap));
+        System.out.println(knapSack(prices , wts , 0 , cap));
     }
 
-     static int knapSack01(int[] prices, int[] wts, int cap) {
+    private static int knapSack(int[] prices, int[] wts, int idx, int cap) {
+        if(cap < 0) return Integer.MIN_VALUE;
+
+        if(idx == prices.length) return 0;  // reach at last+1 so return 0.
+
+        int f1 = knapSack(prices, wts, idx + 1, cap);  // Element doesnot want to add so remain cap same
+        int f2 = prices[idx] + knapSack(prices , wts , idx+1 , cap-wts[idx]);  // Element  wants to add so remove wt from cap.
+
+        int ans = Math.max(f1,f2);
+        return ans;
+    }
+
+    static int knapSack01(int[] prices, int[] wts, int cap) {
 
         int[][] dp = new int[wts.length+1][cap+1];
 
