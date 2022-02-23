@@ -95,10 +95,10 @@ public class HamiltonianCycle {
             }
 
             if(neg){
-                System.out.println(psf+"*");
+                System.out.println(psf+src+"*");
                 return;
             }
-            System.out.println(psf+".");
+            System.out.println(psf+src+".");
         }
 
         visited[src] = true;
