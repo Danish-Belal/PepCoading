@@ -84,18 +84,6 @@ public class PerfectFriends {
 
         int fsize = 0 ;
         for(int i = 0 ; i<friend.size() ; i++){
-
-//            int sz1 = friend.get(i).size();
-//            int c1 = 0 ;
-//
-//            for(int j = i+1 ; j<friend.size() ; j++){
-//                int sz2 =  friend.get(j).size();
-//                c1 += sz2;
-//            }
-//
-//            sz1 *= c1;
-//            fsize += sz1;
-
             for(int j = i+1 ; j<friend.size() ; j++){
                 fsize +=  friend.get(i).size()*friend.get(j).size();
             }
