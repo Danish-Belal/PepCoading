@@ -34,6 +34,7 @@ Sample Output
 2
  */
 
+
 import java.util.Scanner;
 
 public class CoinChangeCombnation {
@@ -49,23 +50,29 @@ public class CoinChangeCombnation {
 
 
 
+        int[][] dp= new int[n+1][amount+1];
 
-        int count =coinchangeR(coin ,0, amount );
+        dp[0][0] = 1;
+
+
+        int count =coinchangeR(coin ,0, amount , dp );
         System.out.println(count);
+        System.out.println(v);
 
       //  System.out.println(coinchangetab(coin , amount));
 
 
     }
-
-    private static int coinchangeR(int[] coin,int idx, int t) {
+        static int v=0;
+    private static int coinchangeR(int[] coin,int idx, int t , int[][] dp) {
 
         if(t == 0) return 1;
         if(t < 0 || idx == coin.length) return 0;
-
-       int f1 = coinchangeR(coin , idx+1 , t);
-       int f2 = coinchangeR(coin , idx , t-coin[idx]);
-       return f1+f2;
+        if(dp[idx][t] != 0) return dp[idx][t];
+       int f1 = coinchangeR(coin , idx+1 , t , dp);
+       int f2 = coinchangeR(coin , idx , t-coin[idx] , dp);
+       v++;
+       return dp[idx][t] = f1+f2;
     }
 
 
