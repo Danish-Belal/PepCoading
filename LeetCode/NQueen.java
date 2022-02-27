@@ -41,6 +41,8 @@ public class NQueen {
                 board[row][col] = '.';
             }
         }
+
+
     }
 
     private static List<String> construct(char[][] board) {
