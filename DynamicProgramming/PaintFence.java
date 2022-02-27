@@ -22,19 +22,18 @@ public class PaintFence {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int k = scn.nextInt();
-      //  System.out.println(printfence(n , k , false));
+        System.out.println(pf(n , k ));
         System.out.println(print(n , k ));
     }
 
-    static int printfence(int n, int k, boolean sord){
+    static int pf(int n, int k ){
 
-        if(n == 1){
-            if(!sord) return k;
-            return 0;
-        }
-        int f1 =  printfence(n-1 , k , true);
-        int f2 =  printfence(n-1 , k , false) *(k-1);
-        return (f1+f2);
+        if(n == 1) return k;
+        if(n == 2) return k*k;
+
+        return (pf(n-1 , k) + pf(n-1 , k))*(k-1);
+
+
     }
 
     private static int print(int n, int k) {
