@@ -102,17 +102,6 @@ public class BuyAndSellStocks {
 
         return dp[dp.length-1][dp[0].length-1];
     }
-
-    static int Re(int[] arr , int idx , int k){
-        if(k == 0 || idx == )
-        int f1 = Re(arr , idx , k-1);
-        int f2 = 0;
-
-        for(int i = 0 ; i<=idx ; i++){
-            int pp = Re(arr  , idx-1 , k-1);
-            if(pp > f2) f2 = pp;
-        }
-        return Math.max(f1,f2);
-    }
+    
 
 }
