@@ -31,11 +31,13 @@ public class BuyAndSellStocks {
         for(int i = 0 ; i<n ; i++){
             arr[i] = scn.nextInt();
         }
-        int k = scn.nextInt();
+     //   int k = scn.nextInt();
 
         //System.out.println(mp(arr));
        // System.out.println(mtp(arr));
-        System.out.println(multiT(arr , k));
+      //  System.out.println(multiT(arr , k));
+        System.out.println(infinitP(arr));
+
     }
 
     // This is for when one transaction Allowed.
@@ -102,6 +104,18 @@ public class BuyAndSellStocks {
 
         return dp[dp.length-1][dp[0].length-1];
     }
-    
+
+
+    // Infinite Transaction .
+    static int infinitP(int[] arr){
+        int profit = 0;
+        for(int i = 0 ; i <arr.length-1 ; i++){
+            if(arr[i+1] > arr[i]){
+                profit += arr[i+1]-arr[i];
+            }
+        }
+        return profit;
+    }
+
 
 }
