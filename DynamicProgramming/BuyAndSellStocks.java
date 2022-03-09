@@ -36,7 +36,8 @@ public class BuyAndSellStocks {
         //System.out.println(mp(arr));
        // System.out.println(mtp(arr));
       //  System.out.println(multiT(arr , k));
-        System.out.println(infinitP(arr));
+      //  System.out.println(infinitP(arr));
+        System.out.println(infiniteP2(arr));
 
     }
 
@@ -115,6 +116,21 @@ public class BuyAndSellStocks {
             }
         }
         return profit;
+    }
+
+    static int infiniteP2(int[] arr){
+        int[] buy = new int[arr.length];
+        int[] sell = new int[arr.length];
+
+
+        buy[0]= -arr[0];
+        sell[0] = 0;
+
+        for(int i = 1 ; i <buy.length ; i++){
+            sell[i] = Math.max(sell[i-1] , buy[i-1]+arr[i]);
+            buy[i] = Math.max(buy[i-1] , sell[i-1]-arr[i]);
+        }
+        return sell[sell.length-1];
     }
 
 
