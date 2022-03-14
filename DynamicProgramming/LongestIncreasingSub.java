@@ -38,7 +38,6 @@ public class LongestIncreasingSub {
 
     private static int longSubR(int[] arr , int idx , int lidx) {
         if(idx == arr.length) return  0;
-
         int f1 =  longSubR(arr , idx+1 , lidx);
         int f2 =0;
         if(lidx == -1 || arr[idx]> arr[lidx]){
