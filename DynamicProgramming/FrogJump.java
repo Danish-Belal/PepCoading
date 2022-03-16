@@ -4,7 +4,10 @@ public class FrogJump {
     public static void main(String[] args){
         int n = 5;
         int[] heights = {12,34,54,3,56,78};
-        System.out.println(frogJump(n  , heights));
+      //  System.out.println(frogJump(n  , heights));
+
+        System.out.println(jumpK(n  , heights , 2));
+        System.out.println(ct);
     }
     public static int frogJump(int n, int heights[]) {
 
@@ -41,5 +44,18 @@ public class FrogJump {
         }
 
         return dp[n-1];
+    }
+    static int ct =  0;  // for counting the number of occurence.
+    static int jumpK(int n , int[] h , int k){
+
+        if(n == 0 ) return 0;
+
+        int min = Integer.MAX_VALUE;
+       for(int jump  =1 ; jump <= k ; jump++){
+
+       if(n-jump >=0) min = Math.min(jumpK(n-jump , h , k)+Math.abs(h[n] - h[n-jump]) , min);
+            ct++;
+       }
+        return min;
     }
 }
