@@ -34,7 +34,12 @@ public class PaintHouse {
                cost[i][j] = scn.nextInt();
            }
         }
-        System.out.println(minCost(cost));
+     //   System.out.println(minCost(cost));
+        System.out.println(ninjaTraining(n ,cost));
+        System.out.println(c);
+
+
+
 
     }
 
@@ -62,4 +67,43 @@ public class PaintHouse {
         }
         return max;
     }
+
+    // Coading Ninja Problem.
+    public static int ninjaTraining(int n, int points[][]) {
+
+        // Write your code here..
+
+        int[][] dp = new int[n][4];
+
+       return f(n-1 , 3 , points , dp);
+    }
+
+    static int  c= 0 ;
+    private static int f(int day, int last, int[][] points , int[][]dp) {
+
+        if(day ==0 ){
+            int maxi = 0 ;
+            for(int task = 0 ; task <3 ; task++){
+                if(task != last){
+                    maxi = Math.max(maxi , points[0][task]);
+                }
+            }
+            return maxi;
+        }
+
+        c++;
+        if(dp[day][last] != 0) return dp[day][last];
+
+        int maxi = 0  ;
+        for(int task = 0 ; task <3 ; task++){
+
+             if(task != last){
+                 int point = points[day][task]+f(day-1 , day , points , dp);
+                 maxi = Math.max(maxi , point);
+             }
+        }
+        return dp[day][last] =  maxi;
+
+    }
+
 }
