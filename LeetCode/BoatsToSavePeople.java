@@ -20,10 +20,11 @@ public class BoatsToSavePeople {
             int sum = people[l]+people[r];
             if(sum <= limit){
                 l++;
-                r--;
+               // r--;
             }else{
-                r--;
+               // r--;
             }
+            r--;
             count++;
         }
         return count;
