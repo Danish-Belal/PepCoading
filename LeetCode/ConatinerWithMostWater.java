@@ -40,7 +40,6 @@ public class ConatinerWithMostWater {
             if(arr[i] < arr[j])  i++ ;
             else    j--;
         }
-
         return max_water;
     }
 }
