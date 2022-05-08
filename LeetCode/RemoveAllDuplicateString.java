@@ -43,6 +43,7 @@ public class RemoveAllDuplicateString {
     public static void main(String[] args){
         String s = "pbbcggttciiippooaais";
         System.out.println(removeDuplicates(s ,2));
+        System.out.println("Danish".equalsIgnoreCase("dANISH"));  // Used to compare two string and ignore case.
 
 
     }
@@ -66,4 +67,6 @@ public class RemoveAllDuplicateString {
         }
         return str.reverse().toString();
     }
+
+
 }
