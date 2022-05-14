@@ -63,11 +63,9 @@ public class PopulateNextPointer {
                 dummy = dummy.next;
                 if(n.left != null) Q.add(n.left);
                 if(n.right != null) Q.add(n.right);
-
             }
         }
         return root;
-
     }
 
 }
