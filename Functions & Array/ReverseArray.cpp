@@ -30,10 +30,10 @@ void reverse(int* arr, int n , int i , int j){
  
    while(j >= i){
        int temp = arr[i];
-       arr[i] = arr[j];
-       arr[j] = temp;
-       j-- ;
-       i++;
+       arr[i++] = arr[j];
+       arr[j--] = temp;
+//       j-- ;
+//       i++;
    }
    
 }
