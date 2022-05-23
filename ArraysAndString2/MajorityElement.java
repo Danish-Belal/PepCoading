@@ -18,9 +18,9 @@ public class MajorityElement {
 
         // Apply moore's voting algo for triplate.
 
-        int ct1 =1,ct2 = 1;
+        int ct1 =1,ct2 = 0;
         int val1= arr[0];
-        int val2 = arr[1];
+        int val2 = arr[0];
 
         for(int i = 2; i<n; i++){
             if(arr[i] == val1){
