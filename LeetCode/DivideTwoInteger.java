@@ -31,10 +31,20 @@ Constraints:
 divisor != 0
  */
 public class DivideTwoInteger {
-    public int divide(int dividend, int divisor) {
+    public static void main(String[] args){
+        System.out.println(divide(-2147483648,-1));
+    }
+    public static  int divide1(int dividend, int divisor) {
         long div = (long)dividend/(long)divisor;
         if(div > 2147483647) return 2147483647;
         else if (div < -2147483648) return -2147483648 ;
+        else return (int)div;
+
+    }
+    public static int divide(int dividend, int divisor) {
+        long div = (long)dividend/(long)divisor;
+        if(div > Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        else if (div < Integer.MIN_VALUE) return Integer.MIN_VALUE ;
         else return (int)div;
 
     }
