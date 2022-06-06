@@ -34,7 +34,6 @@ public class InsertioSortList {
             prev.next = curr;
             curr = temp;
         }
-
         return dummy.next;
     }
 }
