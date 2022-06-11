@@ -21,9 +21,11 @@ Explanation: The answer is "b", with the length of 1.
  */
 public class LongestSubString {
     public static void main(String[] args){
+       String s = "abcdeabcd";
+       System.out.println(lengthOfLongestSubstring(s));
 
     }
-    public int lengthOfLongestSubstring(String s) {
+    public static int lengthOfLongestSubstring(String s) {
 
         Map<Character , Integer> mp = new HashMap<>();
 
