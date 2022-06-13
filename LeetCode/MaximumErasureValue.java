@@ -32,6 +32,8 @@ public class MaximumErasureValue {
         System.out.println(maximumUniqueSubarray( arr));
 
     }
+
+    // not working properly.
     public static int maximumUniqueSubarray(int[] nums) {
 
         int[] preSum = new int[nums.length];
