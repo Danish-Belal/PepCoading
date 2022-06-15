@@ -21,6 +21,7 @@ public class DeleteOperationforTwoStrings {
         return word1.length() + word2.length() - 2*length ;
     }
 
+    // Solves using dp.
     static int lcs(String str1 , String str2){
         int[][] dp = new int[str1.length()+1][str2.length()+1];
 
