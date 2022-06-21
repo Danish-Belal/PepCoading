@@ -1,4 +1,7 @@
 package InterviewQ_CyclicSort;
+
+import java.util.Arrays;
+
 /*
 https://leetcode.com/problems/find-the-duplicate-number/submissions/
 Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
@@ -15,9 +18,12 @@ Output: 3
  */
 public class FindDuplicateNumber {
     public static void main(String[] args) {
-        int[]nums = {1,3,4,2,2};
-        int ans = findDuplicate(nums);
-        System.out.println(ans);
+        int[]nums = {3, 1 ,2 ,5 ,3};
+//        int ans = findDuplicate(nums);
+//        System.out.println(ans);
+
+        int[] ans = findDuplicate3(nums);
+        System.out.println(Arrays.toString(ans));
 
     }
 
@@ -50,5 +56,55 @@ public class FindDuplicateNumber {
         nums[first] = nums[second];
         nums[second] = temp;
     }
+
+
+    // Through slow and fast approach.
+    public static int findDuplicate2(int[] nums) {
+
+        int slow = nums[0];
+        int fast = nums[0];
+
+        do{
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+
+        }while(slow != fast);
+
+        fast = nums[0];
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+
+    }
+    // through miss-rep , miss^2-rep^2
+    public static int[] findDuplicate3(int[] nums) {
+
+        int n = nums.length ;
+
+        int Sn =( n*(n+1))/2;
+        int Ssqr = n*((n+1)*(2*n+1))/6;
+
+        int SsqrNum = 0;
+        int Snum = 0;
+        for(int i : nums){
+            Snum +=i;
+            SsqrNum += (i*i);
+        }
+
+
+        int miss_Plus_rep =( Ssqr-SsqrNum)/(Sn-Snum);
+        System.out.println(miss_Plus_rep);
+
+        int missNo =( miss_Plus_rep+Sn-Snum )/ 2;
+
+
+        int repNo = (missNo)-(Sn-Snum);
+
+
+        return new int[]{repNo,missNo};
+    }
+
 }
 
