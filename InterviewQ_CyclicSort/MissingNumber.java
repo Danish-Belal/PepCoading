@@ -70,4 +70,21 @@ public class MissingNumber {
         arr[first] = arr[second];
         arr[second] = temp;
     }
+
+
+    // Approach 2.
+    // Find alls element sum and minus it from ttl sum . you will get the ans.
+    public int missingNumber2(int[] nums) {
+
+        int n = nums.length;
+        int tSum =( n*(n+1))/2;
+
+        int numsSum = 0;
+        for(int i : nums){
+            numsSum +=i;
+        }
+
+        return tSum-numsSum;
+
+    }
 }
