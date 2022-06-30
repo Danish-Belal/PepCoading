@@ -30,7 +30,7 @@ Sample Output
 */
 #include<bits/stdc++.h>
 using namespace std;
-int dtob(int n)
+int decimaltobinary(int n)
 {
      int ans = 0 ;
      int power =1;
@@ -49,7 +49,7 @@ void subSetOfArray(int *arr , int n){
      int power = pow(2,n);
    
      for(int i = 0 ; i< power ; i++){
-          int bn =dtob(i);
+          int bn =decimaltobinary(i);
        
          int n1=n-1;
           int div = pow(10 , n)/10;
