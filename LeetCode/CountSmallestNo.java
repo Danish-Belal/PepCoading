@@ -40,7 +40,6 @@ public class CountSmallestNo {
             }
             i--;
         }
-
         Collections.reverse(ans);
         return ans ;
     }
