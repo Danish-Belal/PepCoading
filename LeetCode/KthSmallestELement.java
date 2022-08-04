@@ -36,9 +36,14 @@ Could you solve the problem in O(n) time complexity? The solution may be too adv
  */
 public class KthSmallestELement {
     public static void main(String[] args){
-
+        int[][] matrix = {
+                {1,5,9},
+                {10,11,13},
+                {12,13,15}
+        };
+        System.out.println(kthSmallest(matrix , 8));
     }
-    public int kthSmallest(int[][] matrix, int k) {
+    public static int kthSmallest(int[][] matrix, int k) {
         int i = 0 ;
         int j = matrix[0].length;
 
