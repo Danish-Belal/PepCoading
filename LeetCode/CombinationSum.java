@@ -50,19 +50,16 @@ public class CombinationSum {
 
 
     static void combinationSum(int[] arr ,int idx ,  int t , List<List<Integer>> ans , List<Integer> curr){
-
         if(idx == arr.length){
             if( t == 0){
                 ans.add(new ArrayList<>(curr));
             }
             return ;
         }
-
         if(arr[idx] <= t){
             curr.add(arr[idx]);
             combinationSum(arr , idx , t-arr[idx] , ans , curr);
             curr.remove(curr.size()-1);
-
         }
         combinationSum(arr , idx+1 , t , ans, curr);
     }
